@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 5c65f1eac2de818419f82e20da242570
-timeCreated: 1517189680
+guid: 40d22ed18c7dde848aa45e74bb87cc88
+timeCreated: 1517181489
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -11,7 +11,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Pillar
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: e07516fb943b9f34f83165a856b403f8, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
