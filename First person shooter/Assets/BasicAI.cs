@@ -1,19 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BasicAI : MonoBehaviour {
 
-    public Transform target;
-    public Transform myTransform;
+	public Transform target;
+	NavMeshAgent agent;
+    public bool canSeePlayer;
 
-  
+	void Start()
+	{
 
-    // Update is called once per frame
-    void Update () {
-
-        myTransform.LookAt(target);
-        myTransform.Translate(Vector3.forward * 3 * Time.deltaTime);
+		agent = GetComponent<NavMeshAgent>();
 
 	}
+
+
+	void Update () {
+
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.forward, out hit, 100);
+        if (hit.collider)
+        {
+            if (hit.collider.tag == "character")
+                canSeePlayer = true;
+            else if (hit.collider.tag != "character")
+                canSeePlayer = false;
+
+        }
+        /*
+        if (canSeePlayer == true)
+        {
+            print("Enemy can see the player");
+        }
+        else if (canSeePlayer == false)
+        {
+            print("Enemy can't see the player");
+        }
+        */
+
+    
+
+
+        if(canSeePlayer==true)
+		agent.SetDestination(target.position);
+        else
+            transform.LookAt(target);
+    }
+    
 }
