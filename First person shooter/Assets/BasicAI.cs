@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BasicAI : MonoBehaviour {
 
-    public Transform target;
-    public Transform myTransform;
+	public Transform target;
+	NavMeshAgent agent;
 
-  
+	void Start()
+	{
 
-    // Update is called once per frame
-    void Update () {
+		agent = GetComponent<NavMeshAgent>();
 
-        myTransform.LookAt(target);
-        myTransform.Translate(Vector3.forward * 3 * Time.deltaTime);
+	}
+
+
+	void Update () {
+
+		agent.SetDestination(target.position);
 
 	}
 }
